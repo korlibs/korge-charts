@@ -1,8 +1,9 @@
+import korlibs.image.color.*
 import korlibs.korge.*
 import korlibs.korge.scene.*
 import korlibs.korge.view.*
 import korlibs.korge.datapresentation.*
-import org.korge.samples.mymodule.*
+import korlibs.korge.input.*
 
 suspend fun main() = Korge {
     sceneContainer().changeTo({ MainMyModuleScene() })
