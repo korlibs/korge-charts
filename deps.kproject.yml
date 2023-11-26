@@ -1,3 +1,2 @@
 dependencies:
-- ./korge-mymodule
-
+- ./korge-charts
