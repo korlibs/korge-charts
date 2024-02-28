@@ -34,7 +34,7 @@ class PieChartTest {
       onOver { colorMul = Colors.BLACK }
       onOut { colorMul = Colors.WHITE }
     }
-    assertScreenshot(posterize = 5)
+    assertScreenshot(posterize = 5, psnr = 1.0)
 
     pie.updateData(
       listOf(
@@ -44,7 +44,7 @@ class PieChartTest {
         "exampleeee" to 15f,
       )
     )
-    assertScreenshot(posterize = 5)
+    assertScreenshot(posterize = 5, psnr = 1.0)
 
     pie.setColors(listOf(Colors["#73ff5f"],))
     pie.updateData(
@@ -56,6 +56,6 @@ class PieChartTest {
         "defined" to 5f,
       )
     )
-    assertScreenshot(posterize = 5)
+    assertScreenshot(posterize = 5, psnr = 1.0)
   }
 }
