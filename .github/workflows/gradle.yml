@@ -16,6 +16,14 @@ on:
 permissions:
   contents: read
 
+env:
+  CI: true
+  EGL_LOG_LEVEL: debug
+  LIBGL_DEBUG: verbose
+  LIBGL_ALWAYS_SOFTWARE: true
+  MESA_DEBUG: true
+  DISPLAY: ":99"
+
 jobs:
   build:
 
