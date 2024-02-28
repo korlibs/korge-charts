@@ -12,29 +12,29 @@ class PieChartTest {
   fun test() = korgeScreenshotTest(Size(200, 200)) {
     val pie = pieChart(70f) {
       position(100, 100)
+      setColors(
+        listOf(
+          Colors["#73ff5f"],
+          Colors["#4058ff"],
+          Colors["#1efff8"],
+          Colors["#fff918"],
+        )
+      )
+      updateData(
+        listOf(
+          "example" to 10f,
+          "another" to 30f,
+          "very cool" to 5f,
+          "exampleeee" to 15f,
+        )
+      )
     }
 
-    pie.setColors(
-      listOf(
-        Colors["#73ff5f"],
-        Colors["#4058ff"],
-        Colors["#1efff8"],
-        Colors["#fff918"],
-      )
-    )
-    pie.updateData(
-      listOf(
-        "example" to 10f,
-        "another" to 30f,
-        "very cool" to 5f,
-        "exampleeee" to 15f,
-      )
-    )
     pie.getParts()[2].apply {
       onOver { colorMul = Colors.BLACK }
       onOut { colorMul = Colors.WHITE }
     }
-    assertScreenshot(posterize = 5)
+    assertScreenshot(posterize = 5, psnr = 1.0)
 
     pie.updateData(
       listOf(
@@ -44,9 +44,9 @@ class PieChartTest {
         "exampleeee" to 15f,
       )
     )
-    assertScreenshot(posterize = 5)
+    assertScreenshot(posterize = 5, psnr = 1.0)
 
-    pie.setColors(listOf(Colors["#73ff5f"],))
+    pie.setColors(listOf(Colors["#73ff5f"]))
     pie.updateData(
       listOf(
         "not" to 1f,
@@ -56,6 +56,6 @@ class PieChartTest {
         "defined" to 5f,
       )
     )
-    assertScreenshot(posterize = 5)
+    assertScreenshot(posterize = 5, psnr = 1.0)
   }
 }
