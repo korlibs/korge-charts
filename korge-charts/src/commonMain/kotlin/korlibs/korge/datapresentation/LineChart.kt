@@ -12,7 +12,6 @@ inline fun Container.lineChart(
 ) = LineChart(chartSize).addTo(this, callback)
 
 class LineChart(var chartSize: Size) : Container() {
-  private val mainContainer = container {}
   var lineThickness = 4f
   var lineColor = Colors.WHITE
   var axlesColor = Colors.DIMGREY
@@ -33,7 +32,7 @@ class LineChart(var chartSize: Size) : Container() {
     yHints: List<Double> = emptyList(),
     showHintLabels: Boolean = false
   ) {
-    mainContainer.removeChildren()
+    removeChildren()
     if (dataPoints.isEmpty()) return
 
     val xVals = dataPoints.map { it.x } + xHints
@@ -47,7 +46,7 @@ class LineChart(var chartSize: Size) : Container() {
 
     val scaledPoints = dataPoints.map { Point(xScale.get(it.x.toFloat()), yScale.get(it.y.toFloat())) }
 
-    mainContainer.graphics {
+    graphics {
       stroke(axlesColor, info = StrokeInfo(thickness = lineThickness * 2)) {
         polyline(Point(0, 0), Point(0, chartSize.height), Point(chartSize.width, chartSize.height))
       }
@@ -55,6 +54,7 @@ class LineChart(var chartSize: Size) : Container() {
         polyline(scaledPoints)
       }
     }
+
     xHints.map { it to Point(xScale.get(it.toFloat()), chartSize.height - 7) }.forEach { (origVal, scaledVal) ->
       solidRect(lineThickness, lineThickness * 4, color = hintsColor) {
         position(scaledVal)
@@ -65,6 +65,7 @@ class LineChart(var chartSize: Size) : Container() {
         }
       }
     }
+
     yHints.map { it to Point(-7, yScale.get(it.toFloat())) }.forEach { (origVal, scaledVal) ->
       solidRect(lineThickness * 4, lineThickness, color = hintsColor) {
         position(scaledVal)
