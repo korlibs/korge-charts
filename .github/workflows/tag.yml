@@ -21,7 +21,7 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
     - name: Adds link to this repo
-      run: ./addlink.main.kts https://github.com/${{ github.repository }}/tree/main/dummy
+      run: ./addlink.sh https://github.com/${{ github.repository }}/tree/main/dummy
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v5
       with:
