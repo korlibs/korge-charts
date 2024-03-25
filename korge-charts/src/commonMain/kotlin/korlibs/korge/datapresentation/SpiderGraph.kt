@@ -5,6 +5,12 @@ import korlibs.korge.view.*
 import korlibs.math.geom.*
 import korlibs.math.geom.vector.*
 
+/**
+ * Example:
+  spiderGraph(100f, 30f) {
+    updateData(listOf(15f, 16f, 11f, 15f, 16f))
+  }
+ */
 inline fun Container.spiderGraph(
   diameter: Float, maxValue: Float, callback: @ViewDslMarker SpiderGraph.() -> Unit = {}
 ) = SpiderGraph(diameter, maxValue).addTo(this, callback)
@@ -12,6 +18,7 @@ inline fun Container.spiderGraph(
 class SpiderGraph(var diameter: Float, var maxValue: Float, var webThickness: Float = 4f) : Container() {
   var backgroundColor = Colors.DARKGREY
   var foregroundColor = Colors.WHITE.withA(155)
+  var intermediateNets = listOf(.3, .6, .9)
   private val mainContainer = container {}
   private val edgeContainers = mutableListOf<Container>()
   fun getEdgeContainers() = edgeContainers
@@ -37,7 +44,7 @@ class SpiderGraph(var diameter: Float, var maxValue: Float, var webThickness: Fl
           val vectorForNextIdx = getVectorForIdx(idx + 1, datas.size)
           val farOutPosition = vectorForIdx * diameter * 1.1
           edgeContainers.add(mainContainer.container { position(farOutPosition) })
-          listOf(.3, .6, .9).forEach {
+          intermediateNets.forEach {
             val distance = diameter * it
             moveTo(vectorForIdx * distance)
             lineTo(vectorForNextIdx * distance)

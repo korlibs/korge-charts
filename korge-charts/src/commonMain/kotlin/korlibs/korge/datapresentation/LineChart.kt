@@ -7,6 +7,18 @@ import korlibs.korge.view.*
 import korlibs.math.geom.*
 import korlibs.math.geom.vector.*
 
+/** Example:
+ lineChart(Size(200, 100)) {
+   updateData(
+     listOf(
+       Point(15, 55),
+       Point(22, 33),
+       Point(111, 222),
+       Point(333, 312),
+     )
+   )
+ }
+ */
 inline fun Container.lineChart(
   chartSize: Size, callback: @ViewDslMarker LineChart.() -> Unit = {}
 ) = LineChart(chartSize).addTo(this, callback)
