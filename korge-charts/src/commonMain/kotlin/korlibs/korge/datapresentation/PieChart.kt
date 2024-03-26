@@ -11,15 +11,17 @@ import korlibs.math.geom.vector.*
 fun Angle.getXYfromR() = Point(sin(this), cos(this))
 
 /** Example:
- pieChart(70f) {
-   updateData(
-     listOf(
-       "Hello" to 10f,
-       "World" to 30f,
-       "very cool" to 5f,
-     )
-   )
- }
+ * ```kotlin
+ *  pieChart(70f) {
+ *    updateData(
+ *      listOf(
+ *        "Hello" to 10f,
+ *        "World" to 30f,
+ *        "very cool" to 5f,
+ *      )
+ *    )
+ *  }
+ * ```
  */
 inline fun Container.pieChart(diameter: Float, callback: @ViewDslMarker PieChart.() -> Unit = {}) =
   PieChart(diameter).addTo(this, callback)

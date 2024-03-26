@@ -10,15 +10,17 @@ import korlibs.math.geom.*
 
 /**
  * example:
- barChart(Size(200, 100)) {
-         updateData(
-           listOf(
-             "low" to 1f,
-             "medium" to 2f,
-             "high" to 3f,
-           )
-         )
-       }
+ * ```kotlin
+ *  barChart(Size(200, 100)) {
+ *    updateData(
+ *      listOf(
+ *        "low" to 1f,
+ *        "medium" to 2f,
+ *        "high" to 3f,
+ *      )
+ *    )
+ *  }
+ * ```
  */
 inline fun Container.barChart(chartSize: Size, callback: @ViewDslMarker BarChart.() -> Unit = {}) =
   BarChart(chartSize).addTo(this, callback)

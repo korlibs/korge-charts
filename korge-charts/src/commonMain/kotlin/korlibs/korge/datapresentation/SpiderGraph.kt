@@ -7,9 +7,11 @@ import korlibs.math.geom.vector.*
 
 /**
  * Example:
-  spiderGraph(100f, 30f) {
-    updateData(listOf(15f, 16f, 11f, 15f, 16f))
-  }
+ * ```kotlin
+ *   spiderGraph(100f, 30f) {
+ *     updateData(listOf(15f, 16f, 11f, 15f, 16f))
+ *   }
+ * ```
  */
 inline fun Container.spiderGraph(
   diameter: Float, maxValue: Float, callback: @ViewDslMarker SpiderGraph.() -> Unit = {}
